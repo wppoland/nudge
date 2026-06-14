@@ -1,0 +1,7 @@
+/vendor/
+/node_modules/
+/build/
+.DS_Store
+.phpunit.result.cache
+# composer.lock IS committed — pins the dev toolchain (PHPCS/PHPStan/stubs).
+# Nudge has no runtime Composer dependencies; /vendor (dev only) is not shipped.

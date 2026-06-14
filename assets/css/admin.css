@@ -1,0 +1,102 @@
+/**
+ * Nudge — admin settings screen.
+ *
+ * A two-column layout (settings + sticky live preview) built on WordPress admin
+ * styles, with a small inline-help popover. Degrades to a single column on
+ * narrow screens.
+ */
+
+.nudge-admin .nudge-intro {
+	max-inline-size: 60ch;
+	margin-block: 0.5rem 1.25rem;
+}
+
+.nudge-admin .nudge-intro h2 {
+	margin-block-end: 0.25rem;
+}
+
+.nudge-layout {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) 320px;
+	gap: 1.5rem;
+	align-items: start;
+}
+
+@media (max-width: 960px) {
+	.nudge-layout {
+		grid-template-columns: 1fr;
+	}
+}
+
+.nudge-card {
+	background: #fff;
+	border: 1px solid #dcdcde;
+	border-radius: 8px;
+	padding: 1rem 1.25rem;
+	margin-block-end: 1.25rem;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.nudge-card h2 {
+	margin-block-start: 0;
+}
+
+.nudge-preview {
+	position: sticky;
+	top: 50px;
+}
+
+.nudge-preview__hint {
+	color: #646970;
+	margin-block-start: 0;
+}
+
+/* Inline-help affordance. */
+.nudge-help {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	inline-size: 1.25rem;
+	block-size: 1.25rem;
+	margin-inline-start: 0.35rem;
+	padding: 0;
+	border: 1px solid #c3c4c7;
+	border-radius: 50%;
+	background: #f6f7f7;
+	color: #50575e;
+	font-size: 0.75rem;
+	font-weight: 700;
+	line-height: 1;
+	cursor: pointer;
+	vertical-align: middle;
+}
+
+.nudge-help:hover,
+.nudge-help:focus-visible {
+	background: #2271b1;
+	border-color: #2271b1;
+	color: #fff;
+}
+
+.nudge-tip {
+	max-inline-size: 320px;
+	margin: 0;
+	padding: 0.6rem 0.8rem;
+	border: 1px solid #c3c4c7;
+	border-radius: 6px;
+	background: #1d2327;
+	color: #fff;
+	font-size: 0.8125rem;
+	line-height: 1.45;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+}
+
+/* Fallback positioning for the no-Popover path (script toggles [hidden]). */
+.nudge-tip[hidden] {
+	display: none;
+}
+
+/* The preview reuses the storefront bar tokens. */
+.nudge-admin .nudge--preview {
+	margin-block: 0.75rem 0;
+}

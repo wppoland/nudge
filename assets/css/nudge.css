@@ -1,0 +1,133 @@
+/**
+ * Nudge — free-shipping progress bar (storefront).
+ *
+ * Every colour, size, gap and radius is a CSS custom property under the
+ * `--nudge-*` namespace, so themes can re-skin the bar without touching markup.
+ * The track reserves its full height up front (no Cumulative Layout Shift) and
+ * the fill width transitions smoothly — but only where motion is allowed.
+ * Dark-mode aware via prefers-color-scheme.
+ */
+
+.nudge {
+	/* Themeable design tokens (overridable per theme or via inline style). */
+	--nudge-fill: #2271b1;
+	--nudge-track: #e2e4e7;
+	--nudge-success: #1a7f37;
+	--nudge-fg: inherit;
+	--nudge-track-height: 0.625rem;
+	--nudge-radius: 999px;
+	--nudge-gap: 0.5rem;
+	--nudge-font-size: 0.95rem;
+
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	gap: var(--nudge-gap);
+	margin-block: 0 1.25rem;
+	color: var(--nudge-fg);
+	font-size: var(--nudge-font-size);
+	line-height: 1.4;
+}
+
+.nudge *,
+.nudge *::before,
+.nudge *::after {
+	box-sizing: border-box;
+}
+
+.nudge__message {
+	margin: 0;
+	font-weight: 500;
+}
+
+.nudge__message .amount,
+.nudge__message bdi {
+	font-weight: 700;
+	white-space: nowrap;
+}
+
+.nudge.is-complete .nudge__message {
+	color: var(--nudge-success);
+	font-weight: 700;
+}
+
+.nudge__track {
+	position: relative;
+	/* Reserve full height immediately to avoid layout shift on hydration. */
+	block-size: var(--nudge-track-height);
+	inline-size: 100%;
+	background-color: var(--nudge-track);
+	border-radius: var(--nudge-radius);
+	overflow: hidden;
+}
+
+.nudge__fill {
+	display: block;
+	block-size: 100%;
+	inline-size: 0;
+	max-inline-size: 100%;
+	background-color: var(--nudge-fill);
+	border-radius: inherit;
+	transition: width 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+		background-color 0.3s ease;
+	will-change: width;
+}
+
+.nudge.is-complete .nudge__fill {
+	background-color: var(--nudge-success);
+}
+
+/* Subtle animated sheen on the fill, motion-gated below. */
+.nudge__fill::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(
+		90deg,
+		transparent 0%,
+		rgba(255, 255, 255, 0.25) 50%,
+		transparent 100%
+	);
+	transform: translateX(-100%);
+	animation: nudge-sheen 2.4s ease-in-out infinite;
+	pointer-events: none;
+}
+
+.nudge.is-complete .nudge__fill::after {
+	animation: none;
+}
+
+@keyframes nudge-sheen {
+	0% {
+		transform: translateX(-100%);
+	}
+	60%,
+	100% {
+		transform: translateX(100%);
+	}
+}
+
+/* Dark-mode: lift the track so the fill stays legible on dark backgrounds. */
+@media (prefers-color-scheme: dark) {
+	.nudge {
+		--nudge-track: rgba(255, 255, 255, 0.16);
+	}
+}
+
+/* Respect reduced-motion: no width animation, no sheen. */
+@media (prefers-reduced-motion: reduce) {
+	.nudge__fill {
+		transition: none;
+	}
+
+	.nudge__fill::after {
+		animation: none;
+		display: none;
+	}
+}
+
+/* Inline placement (inside the totals table) sits tighter. */
+.nudge--inline {
+	margin-block: 0.75rem 0.25rem;
+	--nudge-font-size: 0.875rem;
+}
