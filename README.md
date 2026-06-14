@@ -1,51 +1,29 @@
-# Nudge — Free Shipping Progress Bar for WooCommerce
+# Nudge
 
-A free, wp.org-ready WooCommerce plugin that shows customers an accessible
-progress bar toward free shipping — "Add {amount} more to get free shipping!" —
-and a success state when the goal is met. Self-contained: no external runtime
-dependencies.
+Nudge shows your WooCommerce shoppers an accessible progress bar toward free shipping — "Add {amount} more to get free shipping!" — and a success message once they qualify, turning fine print into a clear incentive to add more to the cart.
 
-## What it does
+## Features
 
-* Reads the free-shipping threshold automatically from your WooCommerce
-  free-shipping method's minimum order amount (smallest across shipping zones),
-  with a manual fixed-amount fallback.
-* Renders on the cart and checkout (classic + Cart/Checkout Blocks) and via the
-  `[nudge_bar]` shortcode.
-* Updates live with the cart using a tiny dependency-free script (no jQuery of
-  its own), animating smoothly and honouring `prefers-reduced-motion`.
-* Accessible `role="progressbar"` with `aria-valuenow/min/max` and a readable
-  text alternative; zero layout shift; dark-mode aware; themeable via CSS custom
-  properties.
-* Settings under **WooCommerce → Nudge**: enable, threshold source, messages
-  (with the `{amount}` token), bar colours, and placement.
+- Reads the free-shipping threshold automatically from your WooCommerce free-shipping method (the smallest minimum order amount across shipping zones), with a manual fixed-amount fallback.
+- Shows on the cart and checkout, both classic templates and the Cart/Checkout blocks, plus a `[nudge_bar]` shortcode for anywhere.
+- Updates live as the cart changes, animating smoothly and honouring `prefers-reduced-motion`. No jQuery of its own.
+- Accessible `role="progressbar"` with a readable text alternative and zero layout shift; dark-mode aware and themeable via CSS custom properties.
+- Settings under WooCommerce → Nudge: enable, threshold source, messages (with the `{amount}` token), colours and placement.
 
-## Architecture
+## Installation
 
-* `nudge.php` — bootstrap. Declares HPOS/Blocks compatibility, boots on `init:0`
-  and fires `do_action('nudge/booted', Plugin::instance())` from `Plugin::boot()`.
-* `src/Plugin.php` + `src/Container.php` — singleton + minimal DI container.
-* `src/Service/ThresholdResolver.php` — resolves the free-shipping goal and cart
-  progress.
-* `src/Service/ProgressBarService.php` — hooks, asset enqueue, shortcode and
-  rendering.
-* `src/Admin/Settings.php` — settings screen with inline help and live preview.
-* `templates/progress-bar.php` — the storefront markup.
-* `config/{services,hooks,defaults}.php` — wiring and defaults.
+1. Upload the plugin to `/wp-content/plugins/nudge`, or install it from Plugins → Add New.
+2. Activate it. WooCommerce must be active.
+3. Go to WooCommerce → Nudge, enable the bar, and choose where it appears.
 
-## Development
+## Frequently Asked Questions
 
-```bash
-composer install      # dev toolchain only (no runtime deps)
-composer cs           # PHPCS (WordPress security/i18n subset)
-composer analyse      # PHPStan level 6
-```
+**Does it require WooCommerce?**
+Yes.
 
-CI runs PHP lint (8.1–8.3), PHPCS, PHPStan and the official WordPress Plugin
-Check via the shared `wppoland/workflows` reusable workflow.
+**What happens when no free-shipping goal is configured?**
+Nudge hides the bar rather than showing a broken or always-complete one.
 
-## PRO
+Built by WPPoland — https://plogins.com
 
-Premium features (per-zone thresholds, floating mini-cart bar, multiple reward
-tiers, dismissible, custom templates) live in the separate **nudge-pro** add-on,
-which boots on the `nudge/booted` action.
+License: GPL-2.0-or-later
