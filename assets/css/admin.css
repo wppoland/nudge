@@ -1,0 +1,91 @@
+/**
+ * Nudge — admin settings screen.
+ *
+ * A light touch over native wp-admin. We keep WordPress's own form-table,
+ * .wrap and field styling and add only: section grouping (a heading rule with
+ * a short intro), a single restrained accent that matches the storefront bar's
+ * finish-green, and slightly calmer help text.
+ *
+ * The accent (#15803d, the storefront --nudge-success) is used only as a 3px
+ * heading rule (a UI element). Computed contrast against the wp-admin surface:
+ *   #15803d on #ffffff  = 5.02:1   (AA text 4.5:1 ✓, AA UI 3:1 ✓)
+ *   #15803d on #f0f0f1  = 4.40:1   (AA UI 3:1 ✓)
+ * The deeper #115e2e is reserved for any coloured text (token chips):
+ *   #115e2e on #ffffff  = 7.88:1   #115e2e on #f0f0f1 = 6.92:1 (AA text ✓)
+ * It does not collide with WP admin colour schemes because it is scoped to the
+ * Nudge page wrapper only.
+ */
+
+.nudge-settings {
+	--nudge-admin-accent: #15803d;
+	--nudge-admin-accent-text: #115e2e;
+	--nudge-admin-tint: #f0f8f2; /* faint green wash for the intro card */
+	max-width: 48rem;
+}
+
+/* Lead paragraph under the page title. */
+.nudge-settings__lead {
+	margin: 0.5em 0 1.5em;
+	font-size: 14px;
+	color: #50575e; /* WP --wp-admin secondary text, 7.4:1 on white */
+	max-width: 42rem;
+}
+
+/* Section: a heading with an accent rule and an optional intro line. */
+.nudge-section {
+	margin-top: 2em;
+	padding-top: 0.25em;
+}
+
+.nudge-section__title {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	margin: 0 0 0.25em;
+	padding-inline-start: 0.6rem;
+	border-inline-start: 3px solid var(--nudge-admin-accent);
+	font-size: 1.15rem;
+	line-height: 1.4;
+}
+
+.nudge-section__intro {
+	margin: 0 0 0.5em 0.6rem;
+	color: #50575e;
+	max-width: 42rem;
+}
+
+/* The token chip used in help text, e.g. {amount}. */
+.nudge-token {
+	display: inline-block;
+	padding: 0.05em 0.4em;
+	border-radius: 3px;
+	background: var(--nudge-admin-tint);
+	color: var(--nudge-admin-accent-text);
+	font-family: Consolas, Monaco, monospace;
+	font-size: 0.92em;
+}
+
+/* A small live-preview line so a message field shows its effect, not just a
+   label. Reads like example output, clearly distinct from the input. */
+.nudge-preview {
+	margin-top: 0.5em;
+	color: #50575e;
+}
+
+.nudge-preview__label {
+	font-weight: 600;
+	color: #1d2327;
+}
+
+/* Keep help text readable and not too wide. */
+.nudge-settings .description {
+	max-width: 42rem;
+}
+
+@media (prefers-color-scheme: dark) {
+	/* wp-admin is not dark by default; guard only the chip so it stays legible
+	   if a dark admin scheme is active. */
+	.nudge-settings {
+		--nudge-admin-tint: rgba(22, 163, 74, 0.18);
+	}
+}
