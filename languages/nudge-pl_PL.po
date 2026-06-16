@@ -2,19 +2,21 @@
 # This file is distributed under the GPL-2.0-or-later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Nudge - Free Shipping Progress Bar for WooCommerce 0.1.0\n"
+"Project-Id-Version: Nudge - Free Shipping Progress Bar for WooCommerce "
+"0.1.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/nudge\n"
+"POT-Creation-Date: 2026-06-16T20:23:00+00:00\n"
+"PO-Revision-Date: 2026-06-15 10:00+0000\n"
 "Last-Translator: WPPoland <hello@plogins.com>\n"
 "Language-Team: Polish <pl_PL@li.org>\n"
 "Language: pl_PL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-06-14T21:56:39+00:00\n"
-"PO-Revision-Date: 2026-06-15 10:00+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: nudge\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 "
+"|| n%100>14) ? 1 : 2);\n"
 
 #. Plugin Name of the plugin
 #: nudge.php
@@ -28,8 +30,12 @@ msgstr "https://plogins.com/nudge/"
 
 #. Description of the plugin
 #: nudge.php
-msgid "Show a free-shipping progress bar that nudges shoppers to add more to their cart."
-msgstr "Pokaż pasek postępu do darmowej dostawy, który zachęca klientów do dodania większej liczby produktów do koszyka."
+msgid ""
+"Show a free-shipping progress bar that nudges shoppers to add more to their "
+"cart."
+msgstr ""
+"Pokaż pasek postępu do darmowej dostawy, który zachęca klientów do dodania "
+"większej liczby produktów do koszyka."
 
 #. Author of the plugin
 #: nudge.php
@@ -42,95 +48,172 @@ msgid "https://plogins.com/"
 msgstr "https://plogins.com/"
 
 #: nudge.php:47
-msgid "Nudge - Free Shipping Progress Bar for WooCommerce requires WooCommerce to be active."
-msgstr "Nudge - pasek postępu do darmowej dostawy dla WooCommerce wymaga aktywnego WooCommerce."
+msgid ""
+"Nudge - Free Shipping Progress Bar for WooCommerce requires WooCommerce to "
+"be active."
+msgstr ""
+"Nudge - pasek postępu do darmowej dostawy dla WooCommerce wymaga aktywnego "
+"WooCommerce."
 
-#: src/Admin/Settings.php:37
+#: src/Admin/Settings.php:41
 msgid "Nudge — Free Shipping Bar"
 msgstr "Nudge — pasek darmowej dostawy"
 
-#: src/Admin/Settings.php:38
+#: src/Admin/Settings.php:42
 msgid "Nudge"
 msgstr "Nudge"
 
-#: src/Admin/Settings.php:74
-msgid "A friendly progress bar that shows customers how close they are to free shipping — and how much more to add to unlock it. It updates live as the cart changes."
-msgstr "Przyjazny pasek postępu, który pokazuje klientom, jak blisko są darmowej dostawy — i ile jeszcze trzeba dodać, aby ją odblokować. Aktualizuje się na bieżąco wraz ze zmianami w koszyku."
+#: src/Admin/Settings.php:103
+msgid ""
+"Nudge shows customers how close they are to free shipping and exactly how "
+"much more to add to unlock it. It updates live as the cart changes. The "
+"defaults work out of the box — adjust below only if you want to."
+msgstr ""
 
-#: src/Admin/Settings.php:80
+#: src/Admin/Settings.php:110
 msgid "General"
 msgstr "Ogólne"
 
-#: src/Admin/Settings.php:84
+#: src/Admin/Settings.php:111
+msgid ""
+"Turn the bar on and choose where shoppers see it. Showing it on both cart "
+"and checkout keeps the goal in front of them through the whole purchase."
+msgstr ""
+
+#: src/Admin/Settings.php:115
 msgid "Enable Nudge"
 msgstr "Włącz Nudge"
 
-#: src/Admin/Settings.php:88
-msgid "Show the free-shipping progress bar."
-msgstr "Pokaż pasek postępu do darmowej dostawy."
+#: src/Admin/Settings.php:119
+msgid "Show the free-shipping progress bar to shoppers."
+msgstr ""
 
-#: src/Admin/Settings.php:93
+#: src/Admin/Settings.php:121
+msgid ""
+"When off, the bar and its assets never load — no styles or scripts are added "
+"to the front end."
+msgstr ""
+
+#: src/Admin/Settings.php:125
 msgid "Cart page"
 msgstr "Strona koszyka"
 
-#: src/Admin/Settings.php:93
-msgid "Show the bar on the cart."
-msgstr "Pokaż pasek w koszyku."
+#: src/Admin/Settings.php:125
+msgid "Show the bar on the cart page, above the totals."
+msgstr ""
 
-#: src/Admin/Settings.php:94
+#: src/Admin/Settings.php:126
 msgid "Checkout page"
 msgstr "Strona zamówienia"
 
-#: src/Admin/Settings.php:94
-msgid "Show the bar on checkout."
-msgstr "Pokaż pasek podczas składania zamówienia."
+#: src/Admin/Settings.php:126
+msgid "Show the bar on checkout, so the goal stays visible while they pay."
+msgstr ""
 
-#: src/Admin/Settings.php:99
+#: src/Admin/Settings.php:133
 msgid "Free-shipping threshold"
 msgstr "Próg darmowej dostawy"
 
-#: src/Admin/Settings.php:104
+#: src/Admin/Settings.php:134
+msgid ""
+"Where the “you reach free shipping at…” amount comes from. Automatic keeps "
+"the bar in sync with your real shipping rules, so it is never wrong after a "
+"price change."
+msgstr ""
+
+#: src/Admin/Settings.php:139
 msgid "Threshold source"
 msgstr "Źródło progu"
 
-#: src/Admin/Settings.php:111
+#: src/Admin/Settings.php:146
 msgid "Automatic (from free-shipping method)"
 msgstr "Automatyczne (z metody darmowej dostawy)"
 
-#: src/Admin/Settings.php:112
+#: src/Admin/Settings.php:147
 msgid "Manual (fixed amount)"
 msgstr "Ręczne (stała kwota)"
 
-#: src/Admin/Settings.php:121
-msgid "Automatic reads the minimum order amount from your WooCommerce free-shipping method (the smallest one across your shipping zones). The manual amount is used as a fallback."
-msgstr "Tryb automatyczny odczytuje minimalną kwotę zamówienia z metody darmowej dostawy WooCommerce (najniższą spośród wszystkich stref wysyłki). Kwota ręczna jest używana jako wartość awaryjna."
+#: src/Admin/Settings.php:156
+msgid ""
+"Automatic reads the minimum order amount from your WooCommerce free-shipping "
+"method — the smallest one across your shipping zones — so the bar updates "
+"itself when you change that rule. The manual amount below is used as a "
+"fallback when no such method is found."
+msgstr ""
 
-#: src/Admin/Settings.php:126
+#: src/Admin/Settings.php:161
 msgid "Manual amount"
 msgstr "Kwota ręczna"
 
-#: src/Admin/Settings.php:130
-msgid "In your store currency, before shipping and taxes."
-msgstr "W walucie Twojego sklepu, przed kosztami wysyłki i podatkami."
+#: src/Admin/Settings.php:165
+msgid ""
+"In your store currency, before shipping and taxes. Used when the source is "
+"Manual, or as the fallback for Automatic. Default: 50."
+msgstr ""
 
-#: src/Admin/Settings.php:136
+#: src/Admin/Settings.php:173
 msgid "Messages"
 msgstr "Komunikaty"
 
-#. translators: %s: the {amount} token wrapped in <code>.
-#: src/Admin/Settings.php:141
+#. translators: %s: the {amount} token, shown as a styled chip.
+#: src/Admin/Settings.php:178
 #, php-format
-msgid "Use %s in the progress message — it is replaced with the remaining amount, formatted in your store currency."
-msgstr "Użyj %s w komunikacie postępu — zostanie zastąpione pozostałą kwotą, sformatowaną w walucie Twojego sklepu."
+msgid ""
+"What the bar says before and after the goal is reached. Write %s where you "
+"want the remaining amount — it is replaced with the value formatted in your "
+"store currency (e.g. $12.00)."
+msgstr ""
 
-#: src/Admin/Settings.php:150
+#: src/Admin/Settings.php:187
 msgid "Progress message"
 msgstr "Komunikat postępu"
 
-#: src/Admin/Settings.php:158
+#: src/Admin/Settings.php:192 src/Admin/Settings.php:204
+msgid "Shoppers see:"
+msgstr ""
+
+#: src/Admin/Settings.php:199
 msgid "Success message"
 msgstr "Komunikat sukcesu"
 
 #: templates/progress-bar.php:42
 msgid "Progress towards free shipping"
 msgstr "Postęp do darmowej dostawy"
+
+#~ msgid ""
+#~ "A friendly progress bar that shows customers how close they are to free "
+#~ "shipping — and how much more to add to unlock it. It updates live as the "
+#~ "cart changes."
+#~ msgstr ""
+#~ "Przyjazny pasek postępu, który pokazuje klientom, jak blisko są darmowej "
+#~ "dostawy — i ile jeszcze trzeba dodać, aby ją odblokować. Aktualizuje się "
+#~ "na bieżąco wraz ze zmianami w koszyku."
+
+#~ msgid "Show the free-shipping progress bar."
+#~ msgstr "Pokaż pasek postępu do darmowej dostawy."
+
+#~ msgid "Show the bar on the cart."
+#~ msgstr "Pokaż pasek w koszyku."
+
+#~ msgid "Show the bar on checkout."
+#~ msgstr "Pokaż pasek podczas składania zamówienia."
+
+#~ msgid ""
+#~ "Automatic reads the minimum order amount from your WooCommerce free-"
+#~ "shipping method (the smallest one across your shipping zones). The manual "
+#~ "amount is used as a fallback."
+#~ msgstr ""
+#~ "Tryb automatyczny odczytuje minimalną kwotę zamówienia z metody darmowej "
+#~ "dostawy WooCommerce (najniższą spośród wszystkich stref wysyłki). Kwota "
+#~ "ręczna jest używana jako wartość awaryjna."
+
+#~ msgid "In your store currency, before shipping and taxes."
+#~ msgstr "W walucie Twojego sklepu, przed kosztami wysyłki i podatkami."
+
+#, php-format
+#~ msgid ""
+#~ "Use %s in the progress message — it is replaced with the remaining "
+#~ "amount, formatted in your store currency."
+#~ msgstr ""
+#~ "Użyj %s w komunikacie postępu — zostanie zastąpione pozostałą kwotą, "
+#~ "sformatowaną w walucie Twojego sklepu."
