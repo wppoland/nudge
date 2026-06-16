@@ -5,3 +5,6 @@
 .phpunit.result.cache
 # composer.lock IS committed — pins the dev toolchain (PHPCS/PHPStan/stubs).
 # Nudge has no runtime Composer dependencies; /vendor (dev only) is not shipped.
+
+# Local scratch seed files (not part of plugin)
+seed-*.php

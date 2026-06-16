@@ -1,6 +1,13 @@
 /**
  * Nudge — free-shipping progress bar (storefront).
  *
+ * The bar's world is a finish line: the shopper paces toward a marked goal, and
+ * the one moment that matters is crossing it. So the fill is a forward-leaning
+ * pace gradient (amber warming into a confident finish-green), the track carries
+ * an etched finish-line marker at the goal, and reaching it breaks a single
+ * arrival ripple from the line — the tape snapping. In-progress stays calm: a
+ * clean fill with a small leading pace-dot for momentum, nothing more.
+ *
  * Every colour, size, gap and radius is a CSS custom property under the
  * `--nudge-*` namespace, so themes can re-skin the bar without touching markup.
  * The track reserves its full height up front (no Cumulative Layout Shift) and
@@ -10,11 +17,14 @@
 
 .nudge {
 	/* Themeable design tokens (overridable per theme or via inline style). */
-	--nudge-fill: #2271b1;
-	--nudge-track: #e2e4e7;
-	--nudge-success: #1a7f37;
+	--nudge-pace-start: #f59e0b; /* amber — "on your way" */
+	--nudge-pace-end: #16a34a; /* finish green — "almost there" */
+	--nudge-fill: var(--nudge-pace-end); /* solid fallback / theme hook */
+	--nudge-track: #e8eaed;
+	--nudge-line: #15803d; /* etched finish-line marker — opaque deep green for >=3:1 on the track */
+	--nudge-success: #15803d;
 	--nudge-fg: inherit;
-	--nudge-track-height: 0.625rem;
+	--nudge-track-height: 0.75rem;
 	--nudge-radius: 999px;
 	--nudge-gap: 0.5rem;
 	--nudge-font-size: 0.95rem;
@@ -61,49 +71,83 @@
 	overflow: hidden;
 }
 
+/* The finish line: a thin marker etched just inside the goal end of the
+   track. It's part of the world, present from first paint — the shopper can
+   always see where the line is. */
+.nudge__track::after {
+	content: "";
+	position: absolute;
+	inset-block: 0;
+	inset-inline-end: 3px;
+	inline-size: 3px;
+	border-radius: 3px;
+	background-color: var(--nudge-line);
+	z-index: 2;
+	pointer-events: none;
+}
+
 .nudge__fill {
+	position: relative;
 	display: block;
 	block-size: 100%;
 	inline-size: 0;
 	max-inline-size: 100%;
+	/* Pace gradient: anchored across the whole track so the leading edge warms
+	   from amber toward finish-green as the cart gets closer to the goal. */
+	background-image: linear-gradient(
+		90deg,
+		var(--nudge-pace-start) 0%,
+		var(--nudge-pace-end) 100%
+	);
 	background-color: var(--nudge-fill);
+	background-size: 100vw 100%;
+	background-repeat: no-repeat;
 	border-radius: inherit;
-	transition: width 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-		background-color 0.3s ease;
+	transition: width 0.55s cubic-bezier(0.22, 1, 0.36, 1);
 	will-change: width;
 }
 
-.nudge.is-complete .nudge__fill {
-	background-color: var(--nudge-success);
-}
-
-/* Subtle animated sheen on the fill, motion-gated below. */
+/* Leading pace-dot: a soft bright cap riding the front edge of the fill,
+   reading as forward momentum rather than decoration. Calm by default. */
 .nudge__fill::after {
 	content: "";
 	position: absolute;
-	inset: 0;
-	background: linear-gradient(
-		90deg,
-		transparent 0%,
-		rgba(255, 255, 255, 0.25) 50%,
-		transparent 100%
+	inset-block: 0;
+	inset-inline-end: 0;
+	inline-size: var(--nudge-track-height);
+	border-radius: inherit;
+	background: radial-gradient(
+		circle at center,
+		rgba(255, 255, 255, 0.7) 0%,
+		rgba(255, 255, 255, 0) 70%
 	);
-	transform: translateX(-100%);
-	animation: nudge-sheen 2.4s ease-in-out infinite;
 	pointer-events: none;
 }
 
-.nudge.is-complete .nudge__fill::after {
-	animation: none;
+/* THE MOMENT — crossing the line. On completion the fill is solid finish-green,
+   the pace-dot retires, and a single ripple breaks outward from the finish
+   line: the tape snapping. It runs once, then rests. */
+.nudge.is-complete .nudge__fill {
+	background-image: none;
+	background-color: var(--nudge-success);
 }
 
-@keyframes nudge-sheen {
+.nudge.is-complete .nudge__fill::after {
+	display: none;
+}
+
+.nudge.is-complete .nudge__track::after {
+	background-color: rgba(255, 255, 255, 0.85);
+	box-shadow: 0 0 0 0 rgba(21, 128, 61, 0.55);
+	animation: nudge-cross 0.9s cubic-bezier(0.22, 1, 0.36, 1) 1;
+}
+
+@keyframes nudge-cross {
 	0% {
-		transform: translateX(-100%);
+		box-shadow: 0 0 0 0 rgba(21, 128, 61, 0.55);
 	}
-	60%,
 	100% {
-		transform: translateX(100%);
+		box-shadow: 0 0 0 0.9rem rgba(21, 128, 61, 0);
 	}
 }
 
@@ -111,18 +155,20 @@
 @media (prefers-color-scheme: dark) {
 	.nudge {
 		--nudge-track: rgba(255, 255, 255, 0.16);
+		--nudge-line: #4ade80;
+		--nudge-pace-end: #22c55e;
+		--nudge-success: #22c55e;
 	}
 }
 
-/* Respect reduced-motion: no width animation, no sheen. */
+/* Respect reduced-motion: no width animation, no arrival ripple. */
 @media (prefers-reduced-motion: reduce) {
 	.nudge__fill {
 		transition: none;
 	}
 
-	.nudge__fill::after {
+	.nudge.is-complete .nudge__track::after {
 		animation: none;
-		display: none;
 	}
 }
 
@@ -130,4 +176,5 @@
 .nudge--inline {
 	margin-block: 0.75rem 0.25rem;
 	--nudge-font-size: 0.875rem;
+	--nudge-track-height: 0.625rem;
 }
