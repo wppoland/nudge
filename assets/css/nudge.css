@@ -21,7 +21,7 @@
 	--nudge-pace-end: #16a34a; /* finish green — "almost there" */
 	--nudge-fill: var(--nudge-pace-end); /* solid fallback / theme hook */
 	--nudge-track: #e8eaed;
-	--nudge-line: rgba(22, 163, 74, 0.55); /* etched finish-line marker */
+	--nudge-line: #15803d; /* etched finish-line marker — opaque deep green for >=3:1 on the track */
 	--nudge-success: #15803d;
 	--nudge-fg: inherit;
 	--nudge-track-height: 0.75rem;
@@ -155,7 +155,7 @@
 @media (prefers-color-scheme: dark) {
 	.nudge {
 		--nudge-track: rgba(255, 255, 255, 0.16);
-		--nudge-line: rgba(74, 222, 128, 0.7);
+		--nudge-line: #4ade80;
 		--nudge-pace-end: #22c55e;
 		--nudge-success: #22c55e;
 	}
