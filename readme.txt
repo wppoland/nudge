@@ -87,6 +87,10 @@ override.
 1. The free-shipping progress bar on the cart.
 2. The Nudge settings screen.
 
+== External Services ==
+
+Nudge does not connect to any external service. It does not send analytics, register a licence, load remote fonts or scripts, or make any HTTP request off your server. Everything it needs — your free-shipping threshold and cart totals — comes from WooCommerce on the same site, and the bar's stylesheet and small animation script are served from the plugin folder, not a CDN. The only data Nudge stores is two WordPress options on your own database (`nudge_settings` for your configuration and `nudge_db_version` for upgrades), both removed when you delete the plugin.
+
 == Changelog ==
 
 = 0.1.0 =
