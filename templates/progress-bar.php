@@ -3,10 +3,15 @@
  * Free-shipping progress bar (storefront).
  *
  * Accessible: the track is a role="progressbar" with aria-valuenow/min/max, and
- * the human-readable message is the text alternative announced to screen
- * readers. The fill width is set inline so the bar is correct on first paint
- * (no layout shift); the bundled script animates subsequent updates. Colours are
- * CSS custom properties on the stylesheet, so themes can override them.
+ * the human-readable message is a polite live region (role="status",
+ * aria-live="polite", aria-atomic="true") so screen-reader users hear the new
+ * sentence — e.g. "Add €8 more to get free shipping" — when WooCommerce
+ * re-renders the bar after a cart change. It announces only the meaningful
+ * message (the whole short sentence, atomically), never per-keystroke or
+ * per-poll, because the text changes only when the cart total does. The fill
+ * width is set inline so the bar is correct on first paint (no layout shift);
+ * the bundled script animates subsequent updates. Colours are CSS custom
+ * properties on the stylesheet, so themes can override them.
  *
  * @package Nudge
  *
@@ -30,7 +35,13 @@ $message = isset($message) ? (string) $message : '';
 $wrapperClasses = 'nudge nudge--' . $context . ($reached ? ' is-complete' : '');
 ?>
 <div class="<?php echo esc_attr($wrapperClasses); ?>" data-nudge>
-    <p class="nudge__message" data-nudge-message>
+    <p
+        class="nudge__message"
+        data-nudge-message
+        role="status"
+        aria-live="polite"
+        aria-atomic="true"
+    >
         <?php echo wp_kses_post($message); ?>
     </p>
     <div
