@@ -1,5 +1,5 @@
 === Nudge - Free Shipping Progress Bar for WooCommerce ===
-Contributors: wppoland
+Contributors: motylanogha
 Tags: woocommerce, free shipping, cart, progress bar, conversions
 Requires at least: 6.5
 Tested up to: 7.0
