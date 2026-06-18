@@ -28,6 +28,15 @@ When there's nothing useful to show (the bar is disabled, the cart is empty, or 
 threshold is configured) Nudge renders nothing instead of an empty or
 always-finished bar.
 
+= Documentation and links =
+
+* **Documentation** - https://plogins.com/nudge/docs/
+* **Plugin page** - https://plogins.com/nudge/
+* **Source code** - https://github.com/wppoland/nudge
+* **Bug reports and feature requests** - https://github.com/wppoland/nudge/issues
+* **Discussions and questions** - https://github.com/wppoland/nudge/discussions
+
+
 = What it does =
 
 * Reads the free-shipping threshold automatically from your active WooCommerce
