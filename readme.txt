@@ -5,7 +5,7 @@ Requires at least: 6.5
 Tested up to: 7.0
 Requires PHP: 8.1
 Requires Plugins: woocommerce
-Stable tag: 0.1.0
+Stable tag: 0.1.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -102,7 +102,8 @@ Nudge does not connect to any external service. It does not send analytics, regi
 
 == Changelog ==
 
+= 0.1.1 =
+* `nudge/threshold` filter and `ThresholdResolver::zoneThreshold()` for PRO per-zone goals.
+
 = 0.1.0 =
 * First release: free-shipping progress bar for the cart and checkout, with an automatic or manual threshold, live updates as the cart changes, editable messages, dark-mode and reduced-motion support, and a settings screen under WooCommerce → Nudge.
-</content>
-</invoke>

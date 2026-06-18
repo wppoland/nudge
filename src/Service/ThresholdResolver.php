@@ -32,13 +32,48 @@ final class ThresholdResolver
         $manual = max(0.0, (float) ($settings['manual_threshold'] ?? 0.0));
 
         if ($source === 'manual') {
-            return $manual;
+            return (float) apply_filters('nudge/threshold', $manual, $settings);
         }
 
         $auto = $this->autoThreshold();
 
         // Fall back to the manual amount when no free-shipping method is found.
-        return $auto > 0.0 ? $auto : $manual;
+        $threshold = $auto > 0.0 ? $auto : $manual;
+
+        return (float) apply_filters('nudge/threshold', $threshold, $settings);
+    }
+
+    /**
+     * The smallest qualifying free-shipping minimum for a single shipping zone.
+     */
+    public function zoneThreshold(int $zoneId): float
+    {
+        if (! class_exists(\WC_Shipping_Zones::class)) {
+            return 0.0;
+        }
+
+        $zone = $zoneId > 0
+            ? \WC_Shipping_Zones::get_zone($zoneId)
+            : \WC_Shipping_Zones::get_zone_by('zone_id', 0);
+
+        if (! $zone instanceof \WC_Shipping_Zone) {
+            return 0.0;
+        }
+
+        $candidates = [];
+
+        foreach ($zone->get_shipping_methods(true) as $method) {
+            $amount = $this->methodMinAmount($method);
+            if ($amount > 0.0) {
+                $candidates[] = $amount;
+            }
+        }
+
+        if ($candidates === []) {
+            return 0.0;
+        }
+
+        return (float) min($candidates);
     }
 
     /**
