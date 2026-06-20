@@ -169,6 +169,14 @@ final class ProgressBarService implements HasHooks
             'remaining' => $remaining,
         ], $settings);
 
+        /**
+         * Fires after the bar context is resolved and before the template renders.
+         *
+         * @param array<string, mixed> $barContext Progress data for the bar.
+         * @param array<string, mixed> $settings   Merged nudge settings.
+         */
+        do_action('nudge/bar_rendered', $barContext, $settings);
+
         ob_start();
         $this->renderTemplate('progress-bar', $barContext);
 
