@@ -39,7 +39,7 @@ if ($tierMarkers !== []) {
     $wrapperClasses .= ' nudge--tiered';
 }
 ?>
-<div class="<?php echo esc_attr($wrapperClasses); ?>" data-nudge>
+<div class="<?php echo esc_attr($wrapperClasses); ?>" data-nudge data-nudge-placement="<?php echo esc_attr($context); ?>">
     <p
         class="nudge__message"
         data-nudge-message
