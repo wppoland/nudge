@@ -184,9 +184,9 @@ final class ProgressBarService implements HasHooks
     }
 
     /**
-     * @param array<string, mixed> $context
+     * @param array<string, mixed> $vars
      */
-    private function renderTemplate(string $template, array $context): void
+    private function renderTemplate(string $template, array $vars): void
     {
         $file = NUDGE_DIR . 'templates/' . $template . '.php';
 
@@ -194,7 +194,11 @@ final class ProgressBarService implements HasHooks
             return;
         }
 
-        extract($context, EXTR_SKIP);
+        // Note: the param must NOT be named $context — the template's variables
+        // include a "context" key, and extract() with EXTR_SKIP would refuse to
+        // overwrite the parameter, leaving the template's $context as the whole
+        // array (rendering the wrapper class as ".nudge--Array").
+        extract($vars, EXTR_SKIP);
         require $file;
     }
 
