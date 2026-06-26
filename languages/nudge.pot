@@ -44,7 +44,7 @@ msgid "Nudge - Free Shipping Progress Bar for WooCommerce requires WooCommerce t
 msgstr ""
 
 #: src/Admin/Settings.php:41
-msgid "Nudge — Free Shipping Bar"
+msgid "Nudge: Free Shipping Bar"
 msgstr ""
 
 #: src/Admin/Settings.php:42
@@ -52,7 +52,7 @@ msgid "Nudge"
 msgstr ""
 
 #: src/Admin/Settings.php:103
-msgid "Nudge shows customers how close they are to free shipping and exactly how much more to add to unlock it. It updates live as the cart changes. The defaults work out of the box — adjust below only if you want to."
+msgid "Nudge shows customers how close they are to free shipping and exactly how much more to add to unlock it. It updates live as the cart changes. The defaults work out of the box, adjust below only if you want to."
 msgstr ""
 
 #: src/Admin/Settings.php:110
@@ -72,7 +72,7 @@ msgid "Show the free-shipping progress bar to shoppers."
 msgstr ""
 
 #: src/Admin/Settings.php:121
-msgid "When off, the bar and its assets never load — no styles or scripts are added to the front end."
+msgid "When off, the bar and its assets never load, no styles or scripts are added to the front end."
 msgstr ""
 
 #: src/Admin/Settings.php:125
@@ -112,7 +112,7 @@ msgid "Manual (fixed amount)"
 msgstr ""
 
 #: src/Admin/Settings.php:156
-msgid "Automatic reads the minimum order amount from your WooCommerce free-shipping method — the smallest one across your shipping zones — so the bar updates itself when you change that rule. The manual amount below is used as a fallback when no such method is found."
+msgid "Automatic reads the minimum order amount from your WooCommerce free-shipping method, the smallest one across your shipping zones, so the bar updates itself when you change that rule. The manual amount below is used as a fallback when no such method is found."
 msgstr ""
 
 #: src/Admin/Settings.php:161
@@ -130,7 +130,7 @@ msgstr ""
 #. translators: %s: the {amount} token, shown as a styled chip.
 #: src/Admin/Settings.php:178
 #, php-format
-msgid "What the bar says before and after the goal is reached. Write %s where you want the remaining amount — it is replaced with the value formatted in your store currency (e.g. $12.00)."
+msgid "What the bar says before and after the goal is reached. Write %s where you want the remaining amount, it is replaced with the value formatted in your store currency (e.g. $12.00)."
 msgstr ""
 
 #: src/Admin/Settings.php:187

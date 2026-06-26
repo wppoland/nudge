@@ -38,7 +38,7 @@ final class Settings implements HasHooks
     {
         $hook = add_submenu_page(
             'woocommerce',
-            __('Nudge — Free Shipping Bar', 'nudge'),
+            __('Nudge: Free Shipping Bar', 'nudge'),
             __('Nudge', 'nudge'),
             'manage_woocommerce',
             self::PAGE,
@@ -100,7 +100,7 @@ final class Settings implements HasHooks
             <h1><?php echo esc_html(get_admin_page_title()); ?></h1>
 
             <p class="nudge-settings__lead">
-                <?php esc_html_e('Nudge shows customers how close they are to free shipping and exactly how much more to add to unlock it. It updates live as the cart changes. The defaults work out of the box — adjust below only if you want to.', 'nudge'); ?>
+                <?php esc_html_e('Nudge shows customers how close they are to free shipping and exactly how much more to add to unlock it. It updates live as the cart changes. The defaults work out of the box, adjust below only if you want to.', 'nudge'); ?>
             </p>
 
             <form method="post" action="options.php">
@@ -118,7 +118,7 @@ final class Settings implements HasHooks
                                         <input type="checkbox" id="nudge_enabled" name="<?php echo esc_attr(self::OPTION); ?>[enabled]" value="1" <?php checked((bool) ($settings['enabled'] ?? false), true); ?> />
                                         <?php esc_html_e('Show the free-shipping progress bar to shoppers.', 'nudge'); ?>
                                     </label>
-                                    <p class="description"><?php esc_html_e('When off, the bar and its assets never load — no styles or scripts are added to the front end.', 'nudge'); ?></p>
+                                    <p class="description"><?php esc_html_e('When off, the bar and its assets never load, no styles or scripts are added to the front end.', 'nudge'); ?></p>
                                 </td>
                             </tr>
                             <?php
@@ -153,7 +153,7 @@ final class Settings implements HasHooks
                                             </option>
                                         <?php endforeach; ?>
                                     </select>
-                                    <p class="description"><?php esc_html_e('Automatic reads the minimum order amount from your WooCommerce free-shipping method — the smallest one across your shipping zones — so the bar updates itself when you change that rule. The manual amount below is used as a fallback when no such method is found.', 'nudge'); ?></p>
+                                    <p class="description"><?php esc_html_e('Automatic reads the minimum order amount from your WooCommerce free-shipping method, the smallest one across your shipping zones, so the bar updates itself when you change that rule. The manual amount below is used as a fallback when no such method is found.', 'nudge'); ?></p>
                                 </td>
                             </tr>
                             <tr>
@@ -175,7 +175,7 @@ final class Settings implements HasHooks
                         <?php
                         printf(
                             /* translators: %s: the {amount} token, shown as a styled chip. */
-                            esc_html__('What the bar says before and after the goal is reached. Write %s where you want the remaining amount — it is replaced with the value formatted in your store currency (e.g. $12.00).', 'nudge'),
+                            esc_html__('What the bar says before and after the goal is reached. Write %s where you want the remaining amount, it is replaced with the value formatted in your store currency (e.g. $12.00).', 'nudge'),
                             '<span class="nudge-token">{amount}</span>',
                         );
                         ?>
