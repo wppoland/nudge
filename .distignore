@@ -10,6 +10,8 @@
 /node_modules
 /tests
 /scripts
+/seed-config.php
+/seed-ss.php
 /docs
 /composer.json
 /composer.lock
